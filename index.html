@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart School Infrastructure Management</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Include Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script> 
+    <!-- <script src="https://cdn.tailwindcss.com"></script> --> 
     <!-- Include Three.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- Add OrbitControls -->
@@ -14,7 +14,7 @@
     <!-- Add other potential libraries like OrbitControls later -->
     
     <!-- Basic Tailwind Config (Optional: can customize colors, fonts etc.) -->
-    <script>
+    <!-- <script>
         tailwind.config = {
           theme: {
             extend: {
@@ -25,68 +25,107 @@
             }
           }
         }
-      </script>
-    <style type="text/tailwindcss">
+      </script> -->
+    <!-- <style type="text/tailwindcss">
         /* Add custom Tailwind directives or overrides here if needed */
         /* Example: Ensure Three.js container has height */
         #3d-model-container {
             min-height: 60vh; /* Keep this rule */
         }
-    </style>
+    </style> -->
 </head>
-<body class="bg-gray-100 text-gray-800">
-    <header class="bg-gray-800 text-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
-            <h1 class="text-xl md:text-2xl font-bold">Smart School</h1>
-            <nav class="mt-2 md:mt-0">
-                <ul class="flex space-x-4 md:space-x-6">
-                    <li><a href="#3d-model-container" class="hover:text-blue-300 transition duration-200">3D View</a></li>
-                    <li><a href="#dashboard-section" class="hover:text-blue-300 transition duration-200">Dashboard</a></li>
-                    <li><a href="#maintenance-section" class="hover:text-blue-300 transition duration-200">Maintenance</a></li>
+<body>
+    <header>
+        <div class="container">
+            <h1>Smart School</h1>
+            <nav>
+                <ul>
+                    <li><a href="#3d-model-container">3D View</a></li>
+                    <li><a href="#dashboard-section">Dashboard</a></li>
+                    <li><a href="#maintenance-section">Maintenance</a></li>
                     <!-- Add login/logout later -->
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-6">
-        <section id="3d-model-container" class="mb-8 bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 scroll-mt-16 md:scroll-mt-20">
+    <main class="container">
+        <section id="3d-model-container">
             <!-- Three.js canvas will be inserted here by script -->
             <!-- Optionally add a loading indicator here -->
         </section>
 
-        <section id="dashboard-section" class="mb-8 p-6 bg-white rounded-lg shadow scroll-mt-16 md:scroll-mt-20">
-            <h2 class="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">Dashboard</h2>
-            <p class="text-gray-600 mb-6">Welcome! Here's a quick overview of the school's status.</p>
+        <section id="dashboard-section">
+            <h2>Dashboard</h2>
+            <p>Welcome! Here's a quick overview of the school's status.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="widget bg-gray-50 p-4 rounded-md border border-gray-200">
-                    <h3 class="font-semibold mb-2 text-lg text-gray-700">System Status</h3>
-                    <p class="text-sm text-gray-600 mb-1">Solar Panels: <span class="font-bold text-green-600">OK</span></p>
-                    <p class="text-sm text-gray-600 mb-1">Water Supply: <span class="font-bold text-yellow-600">Leak Detected (Area C)</span></p>
-                    <p class="text-sm text-gray-600">Electricity: <span class="font-bold text-green-600">OK</span></p>
+            <div class="dashboard-widgets">
+                <div class="widget">
+                    <h3>System Status</h3>
+                    <p>Solar Panels: <span class="status-ok">OK</span></p>
+                    <p>Water Supply: <span class="status-warning">Leak Detected (Area C)</span></p>
+                    <p>Electricity: <span class="status-ok">OK</span></p>
                 </div>
-                <div class="widget bg-gray-50 p-4 rounded-md border border-gray-200">
-                    <h3 class="font-semibold mb-2 text-lg text-gray-700">Recent Alerts</h3>
-                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <div class="widget">
+                    <h3>Recent Alerts</h3>
+                    <ul>
                         <li>Low water pressure - West Wing - 10:15 AM</li>
                         <li>Network offline - Library - 9:30 AM</li>
                     </ul>
                 </div>
-                <div class="widget bg-gray-50 p-4 rounded-md border border-gray-200">
-                    <h3 class="font-semibold mb-2 text-lg text-gray-700">Quick Actions</h3>
-                    <ul class="space-y-1">
-                       <li><a href="#maintenance-section" class="text-blue-600 hover:underline text-sm">Submit New Maintenance Request</a></li>
-                       <li><a href="#" class="text-blue-600 hover:underline text-sm">View Full Reports (Admin)</a></li> 
+                <div class="widget">
+                    <h3>Quick Actions</h3>
+                    <ul>
+                       <li><a href="#maintenance-section">Submit New Maintenance Request</a></li>
+                       <li><a href="#">View Full Reports (Admin)</a></li> 
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="maintenance-section" class="mb-8 p-6 bg-white rounded-lg shadow scroll-mt-16 md:scroll-mt-20">
-            <h2 class="text-2xl font-semibold mb-6 border-b pb-2 text-gray-700">Maintenance Requests</h2>
+        <section id="maintenance-section">
+            <h2>Maintenance Requests</h2>
             
-            <form id="maintenance-form" class="mb-8 bg-gray-50 p-6 rounded-md border border-gray-200">
-                <h3 class="text-xl font-semibold mb-4 text-gray-700">Report a New Issue</h3>
-                <div class="mb-4">
-                    <label for="issue-location" class="block text-sm font-medium text-gray-700 mb-1">Location:</
+            <form id="maintenance-form">
+                <h3>Report a New Issue</h3>
+                <div>
+                    <label for="issue-location">Location:</label>
+                    <input type="text" id="issue-location" name="location" placeholder="e.g., Classroom 10B, West Wing Roof" required>
+                </div>
+                <div>
+                    <label for="issue-description">Description:</label>
+                    <textarea id="issue-description" name="description" placeholder="Describe the issue" required rows="3"></textarea>
+                </div>
+                <div>
+                    <label for="issue-priority">Priority:</label>
+                    <select id="issue-priority" name="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button type="submit">Submit Request</button>
+            </form>
+
+            <div id="maintenance-list">
+                <h3>Current Issues</h3>
+                <ul>
+                    <!-- Issue items will be loaded here dynamically -->
+                    <li>Loading issues...</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+             <p>&copy; 2024 Smart School Project</p>
+        </div>
+    </footer>
+
+    <!-- Main application logic -->
+    <script src="js/app.js"></script>
+    <!-- Three.js setup logic -->
+    <script src="js/three-setup.js"></script>
+</body>
+</html>

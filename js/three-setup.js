@@ -92,16 +92,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Handle Window Resize ---
     function onWindowResize() {
-        if (container.clientWidth > 0 && container.clientHeight > 0) {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        }
+        // Get the container's actual dimensions
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        // Check if dimensions are valid
+        if (width === 0 || height === 0) return;
+
+        console.log(`Resizing canvas to: ${width} x ${height}`); // DEBUG LOG
+
+        // Update camera's aspect ratio
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+        // Update renderer's size
+        renderer.setSize(width, height);
+        // Optional: Adjust pixel ratio for high-DPI displays
+        // renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     }
     window.addEventListener('resize', onWindowResize);
 
-    // Initial call to set size
-    onWindowResize();
+    // Initial call to set size - add a small delay
+    // onWindowResize(); 
+    setTimeout(onWindowResize, 50); // Delay by 50ms
 
     // Start animation
     animate();

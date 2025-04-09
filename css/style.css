@@ -1,77 +1,351 @@
-/* Basic Reset - Mostly handled by Tailwind's preflight */
-/* * {
+/* Basic Reset */
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+    /* Adjust scroll padding based on header height */
+    /* Assuming header height around 60-80px */
+    scroll-padding-top: 80px; 
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-} */
+}
 
-/* Body styles handled by Tailwind classes */
-/* body {
+/* Body styles */
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-} */
+    background-color: #f8f9fa; /* Slightly lighter gray */
+    color: #343a40; /* Darker text for better contrast */
+    margin: 0; /* Ensure no default body margin */
+}
 
-/* Header, Nav styles handled by Tailwind classes */
-/* header { ... } */
-/* nav { ... } */
-/* nav ul { ... } */
-/* nav ul li { ... } */
-/* nav ul li a { ... } */
+/* Container for centering content */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
 
-/* Main, Section padding/margin handled by Tailwind classes */
-/* main { ... } */
-/* section { ... } */
+/* Header styles */
+header {
+    background: #343a40; /* Darker header */
+    color: #fff;
+    padding: 0.75rem 0; /* Slightly adjust padding */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 100; /* Ensure header is above other content */
+}
 
-/* Headings handled by Tailwind classes */
-/* h1, h2 { ... } */
+header .container {
+    display: flex;
+    justify-content: space-between; /* Space title and nav */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Horizontal layout */
+    gap: 1.5rem; /* Space between nav items */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: #63b3ed; /* Lighter blue on hover/focus */
+}
+
+/* Main content area */
+main {
+    padding: 2rem 0; 
+    /* Container class handles width/centering now */
+}
+
+/* Section styles */
+section {
+    background: #ffffff; /* Clear white background */
+    margin-bottom: 2rem; 
+    padding: 1.5rem 2rem; /* Increase horizontal padding */
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Slightly softer shadow */
+    border: 1px solid #dee2e6; /* Subtle border */
+}
+
+/* Section Headings */
+section h2 {
+    font-size: 1.8rem; /* Slightly larger */
+    color: #212529; /* Very dark gray */
+    margin-bottom: 1.2rem; /* More space below heading */
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #dee2e6; 
+}
+
+section h3 {
+    font-size: 1.3rem; /* Slightly larger */
+    color: #495057;
+    margin-bottom: 1rem;
+}
 
 /* 3D Container specific style */
 #3d-model-container {
-    /* min-height: 400px; */ 
-    min-height: 60vh; /* Keep this rule - Or use Tailwind h-screen, h-[60vh] etc. */
-    /* border: 1px solid #ccc; */ /* Handled by Tailwind */
-    /* position: relative; */ /* Not strictly needed currently */
+    height: 75vh; 
+    border: 3px solid blue !important; 
+    overflow: hidden; 
+    position: relative; 
+    /* display: flex; */ /* Remove flex for now */
+    /* justify-content: center; */
+    /* align-items: center; */
+    background-color: #e9ecef; 
+    box-sizing: border-box !important; /* Explicit border-box */
+    padding: 0 !important; /* Ensure no padding interferes */
 }
 
-/* Canvas styling can be handled inline or via JS if needed */
-/* #3d-model-container canvas {
+#3d-model-container canvas {
     display: block; 
-    width: 100%;
+    width: 100%; 
     height: 100%;
-} */
+    border: 3px solid red !important; 
+    box-sizing: border-box !important; /* Explicit border-box */
+}
 
-/* Footer handled by Tailwind classes */
-/* footer { ... } */
+/* Dashboard Widgets Styling */
+.dashboard-widgets {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 1.5rem; /* Space between widgets */
+    margin-top: 1rem;
+}
 
-/* Maintenance Form Styling handled by Tailwind classes */
-/* #maintenance-form { ... } */
-/* #maintenance-form h3 { ... } */
-/* #maintenance-form div { ... } */
-/* #maintenance-form label { ... } */
-/* #maintenance-form input[type="text"], ... */
-/* #maintenance-form textarea { ... } */
-/* #maintenance-form button { ... } */
-/* #maintenance-form button:hover { ... } */
+.widget {
+    background-color: #f7fafc; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 6px;
+    padding: 1.5rem; /* Increase padding */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Add subtle shadow */
+}
 
-/* Maintenance List Styling handled by Tailwind classes */
-/* #maintenance-list { ... } */
-/* #maintenance-list ul { ... } */
-/* #maintenance-list li { ... } */
-/* #maintenance-list li:last-child { ... } */
+.widget h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.75rem; /* More space for border */
+    font-size: 1.2rem; /* Adjust size */
+    color: #343a40; /* Darker heading */
+}
 
-/* Dashboard Widgets Styling handled by Tailwind classes */
-/* .dashboard-widgets { ... } */
-/* .widget { ... } */
-/* .widget h3 { ... } */
-/* .widget ul { ... } */
-/* .widget li { ... } */
+.widget ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 1rem; /* More space above list */
+}
 
-/* Status Indicator Styling handled by Tailwind text color classes */
-/* .status-ok { ... } */
-/* .status-warning { ... } */
-/* .status-error { ... } */
+.widget li {
+    margin-bottom: 0.5rem; /* More space between items */
+    font-size: 0.9rem;
+    color: #495057; /* Slightly darker gray */
+}
 
-/* Responsive Design handled by Tailwind's responsive modifiers (e.g., md:, lg:) */
-/* @media (max-width: 768px) { ... } */ 
+/* Status Indicator Styling */
+.status-ok {
+    color: #38a169; /* Green */
+    font-weight: bold;
+}
+
+.status-warning {
+    color: #dd6b20; /* Orange */
+    font-weight: bold;
+}
+
+.status-error {
+    color: #e53e3e; /* Red */
+    font-weight: bold;
+}
+
+
+/* Maintenance Form Styling */
+#maintenance-form {
+    margin-top: 1.5rem;
+    padding: 2rem; /* Increase padding */
+    border: 1px solid #dee2e6;
+    border-radius: 8px; /* Slightly more rounded */
+    background-color: #ffffff; /* White background for contrast */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07); /* Subtle shadow */
+}
+
+#maintenance-form h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem; /* More space */
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.75rem;
+}
+
+#maintenance-form div {
+    margin-bottom: 1.2rem; /* More space between fields */
+}
+
+#maintenance-form label {
+    display: block;
+    margin-bottom: 0.5rem; /* More space below label */
+    font-weight: 600; /* Slightly bolder */
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+#maintenance-form input[type="text"],
+#maintenance-form textarea,
+#maintenance-form select {
+    width: 100%;
+    padding: 0.75rem 1rem; /* More padding */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #fff; /* White input background */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#maintenance-form input[type="text"]:focus,
+#maintenance-form textarea:focus,
+#maintenance-form select:focus {
+    outline: none;
+    border-color: #80bdff; /* Lighter blue */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Standard bootstrap focus glow */
+}
+
+
+#maintenance-form textarea {
+    min-height: 100px; /* Slightly taller */
+    resize: vertical;
+}
+
+#maintenance-form button {
+    background-color: #48bb78; /* Green */
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#maintenance-form button:hover {
+    background-color: #38a169; /* Darker green */
+}
+
+/* Maintenance List Styling */
+#maintenance-list {
+    margin-top: 2.5rem; /* More space above list */
+}
+
+#maintenance-list ul {
+    list-style: none;
+    padding: 0;
+    /* space-y: 0.75rem; */ /* Replaced with margin-bottom on li */
+}
+
+#maintenance-list li {
+    padding: 1.25rem 1.5rem; /* Increase padding */
+    margin-bottom: 1rem; /* Add space between items */
+    border: 1px solid #dee2e6;
+    background-color: #ffffff; /* White background */
+    border-radius: 6px;
+    border-left: 5px solid #63b3ed; /* Default blue left border - thicker */
+    font-size: 0.9rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+#maintenance-list li:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08); /* Enhance shadow on hover */
+}
+
+#maintenance-list li.status-completed {
+    border-left-color: #48bb78; /* Green border for completed */
+    opacity: 0.8; /* Slightly less faded */
+    background-color: #f8f9fa; /* Slightly off-white background */
+}
+
+#maintenance-list li strong {
+    display: block;
+    color: #212529;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+#maintenance-list li em {
+    display: block;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-style: normal; /* Use normal style for description */
+}
+#maintenance-list li small {
+    display: block;
+    color: #6c757d; /* Lighter gray for timestamp */
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+#maintenance-list li .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+#maintenance-list li .tag {
+    display: inline-block;
+    background-color: #e2e8f0;
+    color: #4a5568;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+}
+
+
+/* Footer Styles */
+footer {
+    background: #343a40; /* Match header */
+    color: #adb5bd; /* Lighter text */
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design (Example: Stack nav items) */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column; /* Stack title and nav */
+        align-items: flex-start; /* Align items left */
+    }
+    nav {
+        margin-top: 0.5rem; 
+    }
+    nav ul {
+        flex-direction: column; /* Stack nav links */
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    /* Adjust scroll padding for smaller screens if header height changes */
+    html {
+        scroll-padding-top: 100px; /* Example: Increase if header wraps */
+    }
+} 

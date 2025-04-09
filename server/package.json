@@ -17,8 +17,10 @@
   "author": "Your Name / Team",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.3",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "tailwindcss": "^4.1.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
