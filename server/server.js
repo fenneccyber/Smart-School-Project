@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path'); // Needed if serving static files from backend
+const cors = require('cors'); // Import CORS package
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware (Example: JSON body parser)
-app.use(express.json());
+// --- Middleware ---
+app.use(cors()); // Enable CORS for all origins (simplest setup for dev)
+app.use(express.json()); // JSON body parser (already present)
 
 // --- In-Memory Storage (Replace with Database later) ---
 let maintenanceRequests = [];

@@ -1,234 +1,77 @@
-/* Basic Reset */
-* {
+/* Basic Reset - Mostly handled by Tailwind's preflight */
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
-body {
-    /* font-family: sans-serif; */ /* Remove default */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+/* Body styles handled by Tailwind classes */
+/* body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
-}
+} */
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-}
+/* Header, Nav styles handled by Tailwind classes */
+/* header { ... } */
+/* nav { ... } */
+/* nav ul { ... } */
+/* nav ul li { ... } */
+/* nav ul li a { ... } */
 
-nav {
-    margin-top: 0.5rem;
-    /* Basic nav styling */
-    text-align: center; /* Center the list */
-}
+/* Main, Section padding/margin handled by Tailwind classes */
+/* main { ... } */
+/* section { ... } */
 
-nav ul {
-    list-style: none; /* Remove default bullets */
-    padding: 0;
-    margin: 0;
-    display: inline-block; /* Allow centering */
-}
+/* Headings handled by Tailwind classes */
+/* h1, h2 { ... } */
 
-nav ul li {
-    display: inline; /* Display items horizontally */
-    margin: 0 15px; /* Add space between items */
-}
-
-nav ul li a {
-    color: #fff; /* Link color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    text-decoration: underline; /* Underline on hover */
-}
-
-main {
-    padding: 1rem;
-    max-width: 1200px;
-    margin: auto;
-}
-
-section {
-    background: #fff;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 5px;
-}
-
-h1, h2 {
-    margin-bottom: 0.7rem;
-}
-
+/* 3D Container specific style */
 #3d-model-container {
-    /* min-height: 400px; */ /* Increase height */
-    min-height: 60vh; /* Use viewport height for better scaling */
-    border: 1px solid #ccc;
-    position: relative; /* Needed if canvas is absolutely positioned */
+    /* min-height: 400px; */ 
+    min-height: 60vh; /* Keep this rule - Or use Tailwind h-screen, h-[60vh] etc. */
+    /* border: 1px solid #ccc; */ /* Handled by Tailwind */
+    /* position: relative; */ /* Not strictly needed currently */
 }
 
-#3d-model-container canvas {
-    display: block; /* Prevents extra space below canvas */
+/* Canvas styling can be handled inline or via JS if needed */
+/* #3d-model-container canvas {
+    display: block; 
     width: 100%;
     height: 100%;
-}
+} */
 
-footer {
-    text-align: center;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #333;
-    color: #fff;
-}
+/* Footer handled by Tailwind classes */
+/* footer { ... } */
 
-/* Add more specific styles later */
+/* Maintenance Form Styling handled by Tailwind classes */
+/* #maintenance-form { ... } */
+/* #maintenance-form h3 { ... } */
+/* #maintenance-form div { ... } */
+/* #maintenance-form label { ... } */
+/* #maintenance-form input[type="text"], ... */
+/* #maintenance-form textarea { ... } */
+/* #maintenance-form button { ... } */
+/* #maintenance-form button:hover { ... } */
 
-/* Maintenance Form Styling */
-#maintenance-form {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
+/* Maintenance List Styling handled by Tailwind classes */
+/* #maintenance-list { ... } */
+/* #maintenance-list ul { ... } */
+/* #maintenance-list li { ... } */
+/* #maintenance-list li:last-child { ... } */
 
-#maintenance-form h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
-}
+/* Dashboard Widgets Styling handled by Tailwind classes */
+/* .dashboard-widgets { ... } */
+/* .widget { ... } */
+/* .widget h3 { ... } */
+/* .widget ul { ... } */
+/* .widget li { ... } */
 
-#maintenance-form div {
-    margin-bottom: 0.8rem;
-}
+/* Status Indicator Styling handled by Tailwind text color classes */
+/* .status-ok { ... } */
+/* .status-warning { ... } */
+/* .status-error { ... } */
 
-#maintenance-form label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-}
-
-#maintenance-form input[type="text"],
-#maintenance-form textarea,
-#maintenance-form select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#maintenance-form textarea {
-    min-height: 80px;
-    resize: vertical;
-}
-
-#maintenance-form button {
-    background-color: #5cb85c; /* Green */
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-#maintenance-form button:hover {
-    background-color: #4cae4c;
-}
-
-/* Maintenance List Styling */
-#maintenance-list {
-    margin-top: 2rem;
-}
-
-#maintenance-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-#maintenance-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px dashed #eee;
-}
-
-#maintenance-list li:last-child {
-    border-bottom: none;
-}
-
-/* Dashboard Widgets Styling */
-.dashboard-widgets {
-    display: flex;
-    flex-wrap: wrap; /* Allow widgets to wrap on smaller screens */
-    gap: 1rem; /* Space between widgets */
-    margin-top: 1.5rem;
-}
-
-.widget {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 1rem;
-    flex: 1; /* Allow widgets to grow */
-    min-width: 250px; /* Minimum width before wrapping */
-}
-
-.widget h3 {
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
-}
-
-.widget ul {
-    list-style: disc;
-    padding-left: 20px; /* Indent list items */
-    margin: 0;
-}
-
-.widget li {
-    margin-bottom: 0.3rem;
-}
-
-/* Status Indicator Styling (Example) */
-.status-ok {
-    color: green;
-    font-weight: bold;
-}
-
-.status-warning {
-    color: orange;
-    font-weight: bold;
-}
-
-.status-error {
-    color: red;
-    font-weight: bold;
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    nav ul li {
-        display: block; /* Stack nav items vertically */
-        margin: 10px 0; /* Add vertical space */
-    }
-
-    .dashboard-widgets {
-        flex-direction: column; /* Stack widgets vertically */
-    }
-
-    .widget {
-        min-width: 100%; /* Allow widgets to take full width */
-    }
-
-    #maintenance-form input[type="text"],
-    #maintenance-form textarea,
-    #maintenance-form select {
-        font-size: 16px; /* Improve readability on mobile */
-    }
-} 
+/* Responsive Design handled by Tailwind's responsive modifiers (e.g., md:, lg:) */
+/* @media (max-width: 768px) { ... } */ 
