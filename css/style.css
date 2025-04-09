@@ -1,0 +1,64 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav {
+    margin-top: 0.5rem;
+    /* Basic nav styling */
+}
+
+main {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+section {
+    background: #fff;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+h1, h2 {
+    margin-bottom: 0.7rem;
+}
+
+#3d-model-container {
+    min-height: 400px; /* Ensure container has height */
+    border: 1px solid #ccc;
+    position: relative; /* Needed if canvas is absolutely positioned */
+}
+
+#3d-model-container canvas {
+    display: block; /* Prevents extra space below canvas */
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #333;
+    color: #fff;
+}
+
+/* Add more specific styles later */ 
