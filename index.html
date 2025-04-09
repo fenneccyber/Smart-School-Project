@@ -16,6 +16,12 @@
         <h1>Smart School Infrastructure Management</h1>
         <nav>
             <!-- Navigation links will go here -->
+            <ul>
+                <li><a href="#3d-model-container">3D View</a></li>
+                <li><a href="#dashboard-section">Dashboard</a></li>
+                <li><a href="#maintenance-section">Maintenance</a></li>
+                <!-- Add login/logout later -->
+            </ul>
         </nav>
     </header>
 
@@ -27,11 +33,64 @@
         <section id="dashboard-section">
             <h2>Admin Dashboard / User Portal</h2>
             <!-- Content for dashboards/portals will go here -->
+            <p>Welcome! Here's a quick overview of the school's status.</p>
+            
+            <div class="dashboard-widgets">
+                <div class="widget">
+                    <h3>System Status</h3>
+                    <p>Solar Panels: <span class="status-ok">OK</span></p>
+                    <p>Water Supply: <span class="status-warning">Leak Detected (Area C)</span></p>
+                    <p>Electricity: <span class="status-ok">OK</span></p>
+                </div>
+                <div class="widget">
+                    <h3>Recent Alerts</h3>
+                    <ul>
+                        <li>Low water pressure - West Wing - 10:15 AM</li>
+                        <li>Network offline - Library - 9:30 AM</li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <h3>Quick Actions</h3>
+                    <p><a href="#maintenance-section">Submit New Maintenance Request</a></p>
+                    <p><a href="#">View Full Reports (Admin)</a></p> 
+                </div>
+            </div>
         </section>
 
         <section id="maintenance-section">
             <h2>Maintenance Requests</h2>
             <!-- Maintenance form/list will go here -->
+            
+            <!-- Simple Form for Reporting Issues -->
+            <form id="maintenance-form">
+                <h3>Report a New Issue</h3>
+                <div>
+                    <label for="issue-location">Location:</label>
+                    <input type="text" id="issue-location" name="location" placeholder="e.g., Classroom 10B, West Wing Roof" required>
+                </div>
+                <div>
+                    <label for="issue-description">Description:</label>
+                    <textarea id="issue-description" name="description" placeholder="Describe the issue" required></textarea>
+                </div>
+                <div>
+                    <label for="issue-priority">Priority:</label>
+                    <select id="issue-priority" name="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button type="submit">Submit Request</button>
+            </form>
+
+            <!-- List for Displaying Issues -->
+            <div id="maintenance-list">
+                <h3>Current Issues</h3>
+                <ul>
+                    <!-- Issue items will be loaded here dynamically later -->
+                    <li>Loading issues...</li> 
+                </ul>
+            </div>
         </section>
     </main>
 

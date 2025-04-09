@@ -6,7 +6,8 @@
 }
 
 body {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */ /* Remove default */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
@@ -22,6 +23,29 @@ header {
 nav {
     margin-top: 0.5rem;
     /* Basic nav styling */
+    text-align: center; /* Center the list */
+}
+
+nav ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+    display: inline-block; /* Allow centering */
+}
+
+nav ul li {
+    display: inline; /* Display items horizontally */
+    margin: 0 15px; /* Add space between items */
+}
+
+nav ul li a {
+    color: #fff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
 }
 
 main {
@@ -42,7 +66,8 @@ h1, h2 {
 }
 
 #3d-model-container {
-    min-height: 400px; /* Ensure container has height */
+    /* min-height: 400px; */ /* Increase height */
+    min-height: 60vh; /* Use viewport height for better scaling */
     border: 1px solid #ccc;
     position: relative; /* Needed if canvas is absolutely positioned */
 }
@@ -61,4 +86,149 @@ footer {
     color: #fff;
 }
 
-/* Add more specific styles later */ 
+/* Add more specific styles later */
+
+/* Maintenance Form Styling */
+#maintenance-form {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#maintenance-form h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+#maintenance-form div {
+    margin-bottom: 0.8rem;
+}
+
+#maintenance-form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+#maintenance-form input[type="text"],
+#maintenance-form textarea,
+#maintenance-form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#maintenance-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#maintenance-form button {
+    background-color: #5cb85c; /* Green */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#maintenance-form button:hover {
+    background-color: #4cae4c;
+}
+
+/* Maintenance List Styling */
+#maintenance-list {
+    margin-top: 2rem;
+}
+
+#maintenance-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#maintenance-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #eee;
+}
+
+#maintenance-list li:last-child {
+    border-bottom: none;
+}
+
+/* Dashboard Widgets Styling */
+.dashboard-widgets {
+    display: flex;
+    flex-wrap: wrap; /* Allow widgets to wrap on smaller screens */
+    gap: 1rem; /* Space between widgets */
+    margin-top: 1.5rem;
+}
+
+.widget {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 1rem;
+    flex: 1; /* Allow widgets to grow */
+    min-width: 250px; /* Minimum width before wrapping */
+}
+
+.widget h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.widget ul {
+    list-style: disc;
+    padding-left: 20px; /* Indent list items */
+    margin: 0;
+}
+
+.widget li {
+    margin-bottom: 0.3rem;
+}
+
+/* Status Indicator Styling (Example) */
+.status-ok {
+    color: green;
+    font-weight: bold;
+}
+
+.status-warning {
+    color: orange;
+    font-weight: bold;
+}
+
+.status-error {
+    color: red;
+    font-weight: bold;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block; /* Stack nav items vertically */
+        margin: 10px 0; /* Add vertical space */
+    }
+
+    .dashboard-widgets {
+        flex-direction: column; /* Stack widgets vertically */
+    }
+
+    .widget {
+        min-width: 100%; /* Allow widgets to take full width */
+    }
+
+    #maintenance-form input[type="text"],
+    #maintenance-form textarea,
+    #maintenance-form select {
+        font-size: 16px; /* Improve readability on mobile */
+    }
+} 
