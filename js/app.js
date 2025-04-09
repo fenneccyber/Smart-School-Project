@@ -33,45 +33,71 @@ function handleMaintenanceSubmit(event) {
 
     console.log("Maintenance Request Submitted:", issueData);
 
-    // TODO: Send data to backend API (Phase 1/2)
-    // fetch('/api/maintenance', { 
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(issueData)
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log('Success:', data);
-    //     // Add the new issue to the list visually
-    //     addIssueToList(data); // Assuming backend returns the created issue
-    //     form.reset(); // Clear the form
-    // })
-    // .catch((error) => {
-    //     console.error('Error:', error);
-    //     alert('Failed to submit request. Please try again.');
-    // });
+    // --- Send data to backend API ---
+    fetch('http://localhost:3000/api/maintenance', { // Use full URL for local dev
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(issueData) // Send the structured data
+    })
+    .then(response => {
+        if (!response.ok) {
+            // Handle HTTP errors (e.g., 400, 500)
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        // Add the new issue (returned from server with ID) to the list visually
+        addIssueToList(data, true); // Add to top as it's new
+        form.reset(); // Clear the form only on success
+        alert('Request submitted successfully!');
+    })
+    .catch((error) => {
+        console.error('Error submitting maintenance request:', error);
+        alert('Failed to submit request. Check console for details and ensure backend server is running.');
+    });
 
-    // For now, just clear the form and maybe add a dummy entry
-    addIssueToList(issueData, true); // Add to list locally (temporary)
-    form.reset();
-    alert('Request submitted (logged to console for now)!');
+    // Remove temporary local handling
+    // addIssueToList(issueData, true); // Add to list locally (temporary)
+    // form.reset();
+    // alert('Request submitted (logged to console for now)!');
 }
 
 // --- Maintenance List Handling ---
 
-// Placeholder function to load issues (replace with API call later)
+// Function to load issues from the backend
 function loadMaintenanceIssues() {
     const issueList = document.querySelector('#maintenance-list ul');
-    if (issueList) {
-        // Clear placeholder
-        issueList.innerHTML = ''; 
-        // Add dummy data or fetch from API
-        // addIssueToList({ location: 'Test Location', description: 'Initial issue', priority: 'low', status: 'open'});
-        const noIssuesMsg = document.createElement('li');
-        noIssuesMsg.textContent = 'No current issues reported.';
-        noIssuesMsg.style.fontStyle = 'italic';
-        issueList.appendChild(noIssuesMsg);
-    }
+    if (!issueList) return;
+
+    fetch('http://localhost:3000/api/maintenance') // GET request by default
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(issues => {
+            console.log("Loaded issues:", issues);
+            issueList.innerHTML = ''; // Clear placeholder/previous content
+            if (issues.length === 0) {
+                const noIssuesMsg = document.createElement('li');
+                noIssuesMsg.textContent = 'No current issues reported.';
+                noIssuesMsg.style.fontStyle = 'italic';
+                issueList.appendChild(noIssuesMsg);
+            } else {
+                issues.forEach(issue => addIssueToList(issue)); // Add each issue
+            }
+        })
+        .catch(error => {
+            console.error('Error loading maintenance issues:', error);
+            issueList.innerHTML = ''; // Clear placeholder
+            const errorMsg = document.createElement('li');
+            errorMsg.textContent = 'Error loading issues. Please ensure the backend server is running.';
+            errorMsg.style.color = 'red';
+            issueList.appendChild(errorMsg);
+        });
 }
 
 // Function to add a single issue to the list (can be called after submit or load)

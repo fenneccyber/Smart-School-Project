@@ -7,6 +7,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware (Example: JSON body parser)
 app.use(express.json());
 
+// --- In-Memory Storage (Replace with Database later) ---
+let maintenanceRequests = [];
+let nextId = 1;
+
 // --- API Routes --- 
 
 // Example API endpoint
@@ -14,9 +18,40 @@ app.get('/api/hello', (req, res) => {
     res.json({ message: 'Hello from the Smart School Backend!' });
 });
 
-// Placeholder for Maintenance Request Routes
-// app.post('/api/maintenance', (req, res) => { ... });
-// app.get('/api/maintenance', (req, res) => { ... });
+// --- Maintenance Request Routes ---
+
+// GET all maintenance requests
+app.get('/api/maintenance', (req, res) => {
+    // Return requests in reverse chronological order (newest first)
+    res.json(maintenanceRequests.slice().reverse()); 
+});
+
+// POST a new maintenance request
+app.post('/api/maintenance', (req, res) => {
+    const { location, description, priority } = req.body;
+
+    // Basic validation
+    if (!location || !description || !priority) {
+        return res.status(400).json({ error: 'Missing required fields (location, description, priority)' });
+    }
+
+    const newRequest = {
+        id: nextId++, // Simple incrementing ID
+        location,
+        description,
+        priority,
+        status: 'submitted', // Initial status
+        timestamp: new Date().toISOString()
+    };
+
+    maintenanceRequests.push(newRequest);
+    console.log('Added Maintenance Request:', newRequest);
+    
+    // Respond with the created request (good practice)
+    res.status(201).json(newRequest);
+});
+
+// TODO: Add routes for updating status (PUT/PATCH) and deleting (DELETE) later
 
 // --- Optional: Serve Frontend Static Files --- 
 // If you want the Node.js server to ALSO serve the frontend 
