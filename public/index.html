@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart School Infrastructure Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/logo.svg" alt="School Logo">
+                <h1>Smart School</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Dashboard</a>
+                <a href="#">3D Map</a>
+                <a href="#">Maintenance</a>
+                <a href="#">Reports</a>
+            </div>
+            <div class="user-menu">
+                <span class="user-name">Admin User</span>
+                <img src="assets/user-avatar.png" alt="User" class="avatar">
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <ul class="menu">
+                    <li class="menu-item active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="menu-item">
+                        <i class="fas fa-map-3d"></i>
+                        <span>School Map</span>
+                    </li>
+                    <li class="menu-item">
+                        <i class="fas fa-tools"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li class="menu-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Energy Systems</span>
+                    </li>
+                    <li class="menu-item">
+                        <i class="fas fa-water"></i>
+                        <span>Water Systems</span>
+                    </li>
+                    <li class="menu-item">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Settings</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard">
+                <header class="page-header">
+                    <h2>School Infrastructure Dashboard</h2>
+                    <div class="actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i> New Request
+                        </button>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Status Cards -->
+                <div class="status-cards">
+                    <div class="card">
+                        <div class="card-icon bg-success">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Solar System</h3>
+                            <p class="status good">Operational</p>
+                            <p class="metric">Energy Output: 85%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon bg-warning">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Water System</h3>
+                            <p class="status warning">Minor Issues</p>
+                            <p class="metric">Pressure: 80%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon bg-danger">
+                            <i class="fas fa-temperature-high"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>HVAC System</h3>
+                            <p class="status critical">Maintenance Required</p>
+                            <p class="metric">Performance: 65%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon bg-info">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Electrical</h3>
+                            <p class="status good">Operational</p>
+                            <p class="metric">Load: 72%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Map Preview -->
+                <section class="map-section">
+                    <h3>School Map</h3>
+                    <div id="map-container" class="map-container">
+                        <!-- 3D map will be rendered here by JS -->
+                    </div>
+                </section>
+
+                <!-- Maintenance Requests -->
+                <section class="maintenance-section">
+                    <div class="section-header">
+                        <h3>Recent Maintenance Requests</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    
+                    <div class="requests-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Issue</th>
+                                    <th>Location</th>
+                                    <th>Reported By</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#1254</td>
+                                    <td>Water Leak</td>
+                                    <td>Science Lab 2</td>
+                                    <td>John Smith</td>
+                                    <td><span class="badge pending">Pending</span></td>
+                                    <td><span class="badge high">High</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#1253</td>
+                                    <td>Broken Light</td>
+                                    <td>Classroom 103</td>
+                                    <td>Mary Johnson</td>
+                                    <td><span class="badge in-progress">In Progress</span></td>
+                                    <td><span class="badge medium">Medium</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#1252</td>
+                                    <td>AC Not Working</td>
+                                    <td>Computer Lab</td>
+                                    <td>Robert Chen</td>
+                                    <td><span class="badge completed">Completed</span></td>
+                                    <td><span class="badge critical">Critical</span></td>
+                                    <td>
+                                        <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Request Form Modal -->
+    <div id="request-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Report Maintenance Issue</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="maintenance-form">
+                    <!-- Form fields will be inserted here -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.150.1/three.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/3d-map.js"></script>
+</body>
+</html> 
